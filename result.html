@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h4>Analysis Results for <code>{{ token }}</code></h4>
+        </div>
+        <div class="card-body">
+            {% if results %}
+                <div class="list-group">
+                    {% for result in results %}
+                    <div class="list-group-item list-group-item-{{ result[0] }}">
+                        <div class="d-flex justify-content-between">
+                            <strong>{{ result[1] }}</strong>
+                            <span>{{ result[2] }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-success">✅ No scam indicators detected</div>
+            {% endif %}
+            <a href="/" class="btn btn-primary mt-3">Check Another</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
